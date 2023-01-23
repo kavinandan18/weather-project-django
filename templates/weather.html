@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Weather App!!</title>
+    <link rel="icon" href="{% static 'img/weather-app.png' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body style="background-color: #4B515D;">
+    <section class="vh-100" >
+        <div class="container py-5 h-100">
+            <h1 class="text-center heading">Django Weather Application</h1>
+            <form class="form-inline justify-content-center align-items-center pt-2" method="GET">
+                <div class="form-group mx-sm-3 mb-2">
+                  <input type="text" class="form-control placeholder" name="city" placeholder="Enter city name...">
+                </div>
+                <button type="submit" class="btn btn-info mb-2">Submit</button>
+              </form>
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-8 col-lg-6 col-xl-6">
+              {% if weather %}
+              <div class="card " style="color:red; border-radius: 5px;">
+                <div class="card-body mt-1">
+                  <div class="d-flex">
+                    <h6 class="flex-grow-1">{{weather.region}}</h6>
+                    <h6>{{weather.datetime}}</h6>
+                  </div>
+                  <div class="d-flex flex-column text-center mt-3 mb-2">
+                    <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{weather.temp}}°C </h6>
+                    <span class="small" style="color: #868B94">{{weather.status}}</span>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <div class="flex-grow-1" style="font-size: 1rem;">
+                      <div><i class="fas fa-wind fa-fw fa-xl  " style="color: blue;"></i> <span class="ms-1"> {{weather.wind}}
+                        </span></div>
+                      <div><i class="fas fa-tint fa-fw fa-xl " style="color: blue;"></i> <span class="ms-1"> {{weather.humidity}} </span>
+                      </div>
+                    </div>
+                    <div>
+                      <img src="https:{{weather.img}}"
+                        width="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}  
+            </div>
+          </div>
+        </div>
+      </section>   
+</body>
+</html>
